@@ -5,12 +5,12 @@ export default function Numpad(props){
     const {value, setValue} = props
 
     const keys = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '00', '.']
+    const operations = OPERATIONS
 
     const handleClick = (digit)=>{
         setValue((value)=>{
             value = value + ''
             if(digit === '.'){
-                const operations = OPERATIONS
                 let lastOperator = -1
                 for(let i=0; i<operations.length; i++){
                     let lastIndex = value.lastIndexOf(operations[i])
@@ -28,6 +28,18 @@ export default function Numpad(props){
             }
             else if(value === '0' || value === 'MathException'){
                 return (parseInt(digit) === 0) ? 0 : digit
+            }
+            else if(digit === '00'){
+                if(operations.indexOf(value[value.length - 1]) >= 0){
+                    return value + '0'
+                }
+                if((value[value.length - 1] === '0') && (operations.indexOf(value[value.length - 2]) >= 0)){
+                    return value
+                }
+                return value + '00'
+            }
+            else if(value[value.length - 1] === '0' && operations.indexOf(value[value.length - 2]) >= 0){
+                return(value.substring(0,value.length - 1) + digit)
             }
             else{
                 return(value + "" + digit)
