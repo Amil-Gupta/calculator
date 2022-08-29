@@ -31,7 +31,12 @@ export default function Operations(props){
 
     const handleEval = ()=>{
         setValue((value)=>{
-            return eval(value)
+            try{
+                return eval(value)
+            }
+            catch(error){
+                return '0'
+            }
         })
     }
 
