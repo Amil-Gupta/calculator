@@ -7,7 +7,7 @@ export default function Operations(props){
     const handleDelete = ()=>{
         setValue((value)=>{
             value = value + ''
-            if((value + '').length <= 1 || value === 'Infinity' || value === 'NaN'){
+            if((value + '').length <= 1 || value === 'MathException'){
                 return '0'
             }
             else{
@@ -32,10 +32,13 @@ export default function Operations(props){
     const handleEval = ()=>{
         setValue((value)=>{
             try{
-                return eval(value)
+                let res = eval(value)
+                if(res === 'NaN' || res === 'Infinity' ){
+                    return 'MathException'
+                }
             }
             catch(error){
-                return '0'
+                return 'MathException'
             }
         })
     }

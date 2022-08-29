@@ -23,7 +23,7 @@ export default function Numpad(props){
                 }
                 return (value + '.')
             }
-            else if(value === '0' || value === 'Infinity' || value === 'NaN'){
+            else if(value === '0' || value === 'MathException'){
                 return (parseInt(digit) === 0) ? 0 : digit
             }
             else{
