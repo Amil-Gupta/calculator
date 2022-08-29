@@ -7,7 +7,7 @@ export default function Operations(props){
     const handleDelete = ()=>{
         setValue((value)=>{
             value = value + ''
-            if((value + '').length <= 1){
+            if((value + '').length <= 1 || value === 'Infinity' || value === 'NaN'){
                 return '0'
             }
             else{
