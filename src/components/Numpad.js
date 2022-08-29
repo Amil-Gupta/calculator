@@ -4,7 +4,7 @@ import { OPERATIONS } from "../constants"
 export default function Numpad(props){
     const {value, setValue} = props
 
-    const keys = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '00', '.']
+    const keys = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '00', '.']
 
     const handleClick = (digit)=>{
         setValue((value)=>{
@@ -20,6 +20,9 @@ export default function Numpad(props){
                 }
                 if(value.lastIndexOf('.') > lastOperator){
                     return value
+                }
+                if(keys.indexOf(value[value.length - 1]) < 0){
+                    return value + '0.'
                 }
                 return (value + '.')
             }

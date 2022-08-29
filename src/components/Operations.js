@@ -36,8 +36,10 @@ export default function Operations(props){
                 if(res === 'NaN' || res === 'Infinity' ){
                     return 'MathException'
                 }
+                return res
             }
             catch(error){
+                console.log(error)
                 return 'MathException'
             }
         })
