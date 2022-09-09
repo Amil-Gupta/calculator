@@ -33,7 +33,7 @@ export default function Operations(props){
         setValue((value)=>{
             try{
                 let res = eval(value)
-                if(res === 'NaN' || res === 'Infinity' ){
+                if(parseInt(res) != res){
                     return 'MathException'
                 }
                 return res
